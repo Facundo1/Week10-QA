@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Register Page</title>
+</head>
+
+<body>
+    <div class="register-form">
+        <h1>RadiumRocket Register</h1>
+        <form id='register-form' method="post">
+            <label>Email
+                <input id='register-input-email' type="email" required />
+            </label>
+            <label>Name
+                <input id='register-input-name' type="text" required />
+            </label>
+            <label>Password
+                <input id='register-input-password' type="password" required />
+            </label>
+            <label>Confirm-Password
+                <input id='register-input-confirm-password' type="password" required />
+            </label>
+            <button type="button" onclick="userAndDomValidations()">Create account</button>
+            <button type="button" onclick="cleanForm()">Reset fields</button>
+            <a id='back-to-login-link' href="login.html" rel="noopener noreferrer">Back</a>
+            <div id="register-validation-div">
+                Validaciones
+            </div>
+        </form>
+    </div>
+    <script src="../js/register.js"></script>
+</body>
+
+</html>
