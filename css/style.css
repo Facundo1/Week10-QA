@@ -123,8 +123,37 @@ border-radius: 10px;
 font-family: cursive;
 font-weight: bolder;
 font-size: 30px; 
-color:rgb(255, 4, 4);
+color:rgb(102, 2, 2);
 }
+
+#mail-validation-div{
+display: none; 
+position: absolute;   
+left: 57%;
+margin-top: 8px;
+padding: 10px;
+transform: translate(-50%,-50%);           
+border-radius: 10px;
+font-family: cursive;
+font-weight: bolder;
+font-size: 20px; 
+color:rgb(104, 1, 1);
+}
+
+#password-validation-div{
+ display: none; 
+ position: absolute;
+ top: 53%;
+ left: 57%;
+ margin-top: 8px;
+ padding: 10px;
+ transform: translate(-50%,-50%);           
+ border-radius: 10px;
+ font-family: cursive;
+ font-weight: bolder;
+ font-size: 20px; 
+ color:rgb(92, 0, 0);
+ }
 
 #register-validation-div{
 display: none; 

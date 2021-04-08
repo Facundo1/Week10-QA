@@ -1,100 +1,115 @@
-var infoDiv = document.getElementById('login-validation-div')
-var errorMessages = ''
-
 var emailInput = document.getElementById('login-input-email')
+var infoDiv = document.getElementById('login-validation-div')
+var infoDivMail = document.getElementById('mail-validation-div')
+var infoDivPassword = document.getElementById('password-validation-div')
+var errorMailMessageBlur = ''
+var errorPasswordMessageBlur = ''
 var passwordInput = document.getElementById('login-input-password')
-var labelsQantity = document.getElementsByTagName('Label')
-var inputsQantity = document.getElementsByTagName('input')
-var buttonsQantity = document.getElementsByTagName('button')
-var formExistence = document.getElementsByTagName('form')
-var formWillReset = document.getElementById('login-form')
 
-function userAndDomValidations() {
 
-    // Validate if in the HTML document exist a form
-    if (formExistence.length === 0) {
-        errorMessages = ("Form tag doesn't exist in the html document")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+emailInput.addEventListener("blur", validateBlurEmailText)
+passwordInput.addEventListener("blur", validateBlurPasswordText)
+emailInput.addEventListener("focus", validateFocusEmailText)
+passwordInput.addEventListener("focus", validateFocusPasswordText)
+
+function validateBlurEmailText() {
+    // Validate if the  email input contains text         
+    if (emailInput.value === "" || emailInput.value === null) {
+        errorMailMessageBlur = ("Email field can't be empty")
+        infoDivMail.style.display = "block"
+        infoDivMail.style.color = "red"
+        infoDivMail.innerText = errorMailMessageBlur
         return;
     }
+    if (!isEmail(emailInput.value)) {
+        errorMailMessageBlur = ("Email is invalid")
+        infoDivMail.style.display = "block"
+        infoDivMail.style.color = "red"
+        infoDivMail.innerText = errorMailMessageBlur
+        return
+    }
+}
 
-    // Validate the qantity of labels tags are in the document
-    if (labelsQantity.length !== 2) {
-        errorMessages = ("There aren't label tags in the document")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+function validateFocusEmailText() {
+    // Validate if the  email input contains text         
+    if (emailInput.value === "" || emailInput.value === null) {
+        infoDivMail.style.display = "none"
         return;
     }
-
-    // Validate the qantity of inputs tags are in the document
-    if (inputsQantity.length !== 2) {
-        errorMessages = ("there aren't inputs tags in the document")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
-        return;
+    if (!isEmail(emailInput.value)) {
+        infoDivMail.style.display = "none"
+        return
     }
+}
 
+function validateBlurPasswordText() {
     // Validate if the  email input contains text 
-    if (emailInput.value === "") {
-        errorMessages = ("Email field can't be empty")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+    if (passwordInput.value === "" || passwordInput.value === null) {
+        errorPasswordMessageBlur = ("Password field can't be empty")
+        infoDivPassword.style.display = "block"
+        infoDivPassword.style.color = "red"
+        infoDivPassword.innerText = errorPasswordMessageBlur
         return;
     }
-
-    // Validate if the  password input contains text
-    if (passwordInput.value === "") {
-        errorMessages = ("Password field can't be empty")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+    if (passwordInput.value.search(/[a-z]/) < 0) {
+        errorPasswordMessageBlur = ("Password must contain at least one lowercase letter")
+        infoDivPassword.style.display = "block"
+        infoDivPassword.style.color = "red"
+        infoDivPassword.innerText = errorPasswordMessageBlur
         return;
     }
-
-    // Validate if the  email input contains null value 
-    if (emailInput.value === null) {
-        errorMessages = ("Email field can't be null")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+    if (passwordInput.value.search(/[A-Z]/) < 0) {
+        errorPasswordMessageBlur = ("Password must contain at least one uppercase letter")
+        infoDivPassword.style.display = "block"
+        infoDivPassword.style.color = "red"
+        infoDivPassword.innerText = errorPasswordMessageBlur
         return;
     }
-
-    // Validate if the  password input contains null value
-    if (passwordInput.value === null) {
-        errorMessages = ("Password field can't be null")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+    if (passwordInput.value.search(/[0-9]/) < 0) {
+        errorPasswordMessageBlur = ("Password must contain at least one number ")
+        infoDivPassword.style.display = "block"
+        infoDivPassword.style.color = "red"
+        infoDivPassword.innerText = errorPasswordMessageBlur
         return;
     }
-
-    // Validate the qantity of buttons are in the document
-    if (buttonsQantity.value === 2) {
-        errorMessages = ("there aren't the enoght qantity of button tags in the document")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+    if (passwordInput.value.length < 8) {
+        errorPasswordMessageBlur = ("Password must have at least 8 characters")
+        infoDivPassword.style.display = "block"
+        infoDivPassword.style.color = "red"
+        infoDivPassword.innerText = errorPasswordMessageBlur
         return;
     }
-
-    // all validations passed
-    else {
-        errorMessages = ("♣ All DOM and user validations passed ♣")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "green"
-        infoDiv.innerText = errorMessages
+}
+function validateFocusPasswordText() {
+    // Validate if the  email input contains text 
+    if (passwordInput.value === "" || passwordInput.value === null) {
+        infoDivPassword.style.display = "none"
+        return;
+    }
+    if (passwordInput.value.search(/[a-z]/) < 0) {
+        infoDivPassword.style.display = "none"
+        return;
+    }
+    if (passwordInput.value.search(/[A-Z]/) < 0) {
+        infoDivPassword.style.display = "none"
+        return;
+    }
+    if (passwordInput.value.search(/[0-9]/) < 0) {
+        infoDivPassword.style.display = "none"
+        return;
+    }
+    if (passwordInput.length >= 8) {
+        infoDivPassword.style.display = "none"
         return;
     }
 }
 
-function cleanForm() {
-    formWillReset.reset();
+//function validation mail
+function isEmail(email) {
+    //test return a boolean
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email
+    );
 }
 
 
