@@ -4,6 +4,7 @@ var infoDivPassword = document.getElementById('register-password-validation-div'
 var infoDivConfirmPassword = document.getElementById('register-cpassword-validation-div')
 var infoDiv = document.getElementById('register-validation-div')
 var registerButton = document.getElementById('register-button')
+var formWillReset = document.getElementById('register-form')
 var errorMailMessageBlur = ''
 var errorNameMessageBlur = ''
 var errorPasswordMessageBlur = ''
@@ -59,11 +60,11 @@ function validateBlurNameText() {
         infoDivName.innerText = errorNameMessageBlur
         return;
     }
-    if (nameInput.value.indexOf(' ') === 0) {
+    if (nameInput.value.search(/\s/g) <= 0) {
         errorNameMessageBlur = ("Full name must contains a space")
         infoDivName.style.display = "block"
         infoDivName.style.color = "red"
-        infoDivName.innerText = errorMailMessageBlur
+        infoDivName.innerText = errorNameMessageBlur
         return;
     }
 }
@@ -142,16 +143,16 @@ function validateBlurConfirmPasswordText() {
     // Validate if the  email input contains text         
     if (confirmPasswordInput.value === "" || confirmPasswordInput.value === null) {
         errorConfirmPasswordMessageBlur = ("confirm password field can't be empty")
-        infoDivMail.style.display = "block"
-        infoDivMail.style.color = "red"
-        infoDivMail.innerText = errorConfirmPasswordMessageBlur
+        infoDivConfirmPassword.style.display = "block"
+        infoDivConfirmPassword.style.color = "red"
+        infoDivConfirmPassword.innerText = errorConfirmPasswordMessageBlur
         return;
     }
     if (confirmPasswordInput.value !== passwordInput.value) {
         errorConfirmPasswordMessageBlur = ("passwords must match")
-        infoDivMail.style.display = "block"
-        infoDivMail.style.color = "red"
-        infoDivMail.innerText = errorConfirmPasswordMessageBlur
+        infoDivConfirmPassword.style.display = "block"
+        infoDivConfirmPassword.style.color = "red"
+        infoDivConfirmPassword.innerText = errorConfirmPasswordMessageBlur
         return;
     }
 }
@@ -167,58 +168,54 @@ function validateFocusConfirmPasswordText() {
 function validationsOk() {
     // Validate if the  email input contains text 
     if (emailInput.value === "" || emailInput.value === null) {
-        errorMessages = ("Email field can't be empty")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+
         return;
     }
 
     // Validate if the  email input contains text 
     if (nameInput.value === "" || nameInput.value === null) {
-        errorMessages = ("Name field can't be empty")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+
         return;
     }
 
     // Validate if the  password input contains text
     if (passwordInput.value === "" || passwordInput.value === null) {
-        errorMessages = ("Password field can't be empty")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+
         return;
     }
 
     // Validate if the  confirm-password input contains text
     if (confirmPasswordInput.value === "" || confirmPasswordInput.value === null) {
-        errorMessages = ("Confirm password field can't be empty")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+
         return;
     }
 
 
     // Validate if the  confirm-password match with the password
     if (confirmPasswordInput.value !== passwordInput.value) {
-        errorMessages = ("Please, make match the passwords")
-        infoDiv.style.display = "block"
-        infoDiv.style.color = "red"
-        infoDiv.innerText = errorMessages
+
         return;
     }
 
     // all validations passed
     else {
-        errorMessages = ("♣ All DOM and users validations passed. Account created successfully♣")
+        errorMessages = ("♣ All validations passed. Account created successfully♣")
         infoDiv.style.display = "block"
         infoDiv.style.color = "green"
         infoDiv.innerText = errorMessages
         return;
     }
+}
+
+function isEmail(email) {
+    //test return a boolean
+    return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+        email
+    );
+}
+
+function hasWhiteSpace(s) {
+    return /\s/g.test(s);
 }
 
 function cleanForm() {
