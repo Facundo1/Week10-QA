@@ -16,22 +16,24 @@
         <form id='register-form' method="post">
             <label>Email
                 <input id='register-input-email' type="email" required />
+                <div id="register-mail-validation-div"></div>
             </label>
-            <label>Name
+            <label>Full name
                 <input id='register-input-name' type="text" required />
+                <div id="register-name-validation-div"></div>
             </label>
             <label>Password
                 <input id='register-input-password' type="password" required />
+                <div id="register-password-validation-div"></div>
             </label>
             <label>Confirm-Password
                 <input id='register-input-confirm-password' type="password" required />
+                <div id="register-cpassword-validation-div"></div>
             </label>
-            <button type="button" onclick="userAndDomValidations()">Create account</button>
+            <button id="register-button" type="button">Create account</button>
             <button type="button" onclick="cleanForm()">Reset fields</button>
             <a id='back-to-login-link' href="login.html" rel="noopener noreferrer">Back</a>
-            <div id="register-validation-div">
-                Validaciones
-            </div>
+            <div id="register-validation-div"></div>
         </form>
     </div>
     <script src="../js/register.js"></script>

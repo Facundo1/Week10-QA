@@ -1,16 +1,19 @@
 var emailInput = document.getElementById('login-input-email')
+var passwordInput = document.getElementById('login-input-password')
+var loginButton = document.getElementById('login-button')
 var infoDiv = document.getElementById('login-validation-div')
 var infoDivMail = document.getElementById('mail-validation-div')
 var infoDivPassword = document.getElementById('password-validation-div')
 var errorMailMessageBlur = ''
 var errorPasswordMessageBlur = ''
-var passwordInput = document.getElementById('login-input-password')
+var errorMessagesValidationsOk = ''
 
 
 emailInput.addEventListener("blur", validateBlurEmailText)
 passwordInput.addEventListener("blur", validateBlurPasswordText)
 emailInput.addEventListener("focus", validateFocusEmailText)
 passwordInput.addEventListener("focus", validateFocusPasswordText)
+loginButton.addEventListener('click', validationsOk)
 
 function validateBlurEmailText() {
     // Validate if the  email input contains text         
@@ -80,6 +83,7 @@ function validateBlurPasswordText() {
         return;
     }
 }
+
 function validateFocusPasswordText() {
     // Validate if the  email input contains text 
     if (passwordInput.value === "" || passwordInput.value === null) {
@@ -98,10 +102,52 @@ function validateFocusPasswordText() {
         infoDivPassword.style.display = "none"
         return;
     }
-    if (passwordInput.length >= 8) {
+    if (passwordInput.value.length >= 8) {
         infoDivPassword.style.display = "none"
         return;
     }
+
+}
+
+function validationsOk() {
+    // Validate if the  email input contains text         
+    if (emailInput.value === "" || emailInput.value === null) {
+
+        return;
+    }
+    if (!isEmail(emailInput.value)) {
+
+        return
+    }
+
+    // Validate if the  email input contains text 
+    if (passwordInput.value === "" || passwordInput.value === null) {
+        return
+    }
+    if (passwordInput.value.search(/[a-z]/) < 0) {
+
+        return;
+    }
+    if (passwordInput.value.search(/[A-Z]/) < 0) {
+
+        return;
+    }
+    if (passwordInput.value.search(/[0-9]/) < 0) {
+
+        return;
+    }
+    if (passwordInput.value.length < 8) {
+
+        return;
+    }
+    else {
+        errorMessagesValidationsOk = ("Logged Succesfully ")
+        infoDiv.style.display = "block"
+        infoDiv.style.color = "green"
+        infoDiv.innerText = errorMessagesValidationsOk
+        return;
+    }
+
 }
 
 //function validation mail

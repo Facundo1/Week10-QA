@@ -113,7 +113,7 @@ outline: none;
 }
 
 #login-validation-div{
-display: none; 
+display: block; 
 position: absolute;
 top: 83%;
 left: 53%;
@@ -129,7 +129,7 @@ color:rgb(102, 2, 2);
 #mail-validation-div{
 display: none; 
 position: absolute;   
-left: 57%;
+left: 52%;
 margin-top: 8px;
 padding: 10px;
 transform: translate(-50%,-50%);           
@@ -143,8 +143,8 @@ color:rgb(104, 1, 1);
 #password-validation-div{
  display: none; 
  position: absolute;
- top: 53%;
- left: 57%;
+ top: 58%;
+ left: 52%;
  margin-top: 8px;
  padding: 10px;
  transform: translate(-50%,-50%);           
@@ -168,6 +168,60 @@ font-weight: bolder;
 font-size: 30px; 
 color:rgb(255, 4, 4);
 }
+
+#register-mail-validation-div{
+display: none; 
+position: absolute;   
+left: 52%;
+margin-top: 8px;
+padding: 10px;
+transform: translate(-50%,-50%);           
+border-radius: 10px;
+font-family: cursive;
+font-weight: bolder;
+font-size: 20px; 
+color:rgb(104, 1, 1);
+}
+    #register-name-validation-div{
+        display: none; 
+        position: absolute;   
+        left: 52%;
+        margin-top: 8px;
+        padding: 10px;
+        transform: translate(-50%,-50%);           
+        border-radius: 10px;
+        font-family: cursive;
+        font-weight: bolder;
+        font-size: 20px; 
+        color:rgb(104, 1, 1);
+        }
+        #register-password-validation-div{
+            display: none; 
+            position: absolute;   
+            left: 52%;
+            margin-top: 8px;
+            padding: 10px;
+            transform: translate(-50%,-50%);           
+            border-radius: 10px;
+            font-family: cursive;
+            font-weight: bolder;
+            font-size: 20px; 
+            color:rgb(104, 1, 1);
+            }
+
+ #register-cpassword-validation-div{
+   display: none; 
+   position: absolute;   
+   left: 52%;
+   margin-top: 8px;
+   padding: 10px;
+   transform: translate(-50%,-50%);           
+   border-radius: 10px;
+   font-family: cursive;
+   font-weight: bolder;
+   font-size: 20px; 
+   color:rgb(104, 1, 1);
+                }
         
 #back-to-login-link{       
 margin-top: 10px;
