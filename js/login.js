@@ -1,22 +1,25 @@
+//Getting elements by ID
 var emailInput = document.getElementById('login-input-email')
 var passwordInput = document.getElementById('login-input-password')
 var loginButton = document.getElementById('login-button')
 var infoDiv = document.getElementById('login-validation-div')
 var infoDivMail = document.getElementById('mail-validation-div')
 var infoDivPassword = document.getElementById('password-validation-div')
+
+// Variables to send validation messages
 var errorMailMessageBlur = ''
 var errorPasswordMessageBlur = ''
 var errorMessagesValidationsOk = ''
 
-
+// Add events to elements
 emailInput.addEventListener("blur", validateBlurEmailText)
 passwordInput.addEventListener("blur", validateBlurPasswordText)
 emailInput.addEventListener("focus", validateFocusEmailText)
 passwordInput.addEventListener("focus", validateFocusPasswordText)
 loginButton.addEventListener('click', validationsOk)
 
+// Validations of email (blur event)
 function validateBlurEmailText() {
-    // Validate if the  email input contains text         
     if (emailInput.value === "" || emailInput.value === null) {
         errorMailMessageBlur = ("Email field can't be empty")
         infoDivMail.style.display = "block"
@@ -33,8 +36,8 @@ function validateBlurEmailText() {
     }
 }
 
+// Validations of email (focus event)
 function validateFocusEmailText() {
-    // Validate if the  email input contains text         
     if (emailInput.value === "" || emailInput.value === null) {
         infoDivMail.style.display = "none"
         return;
@@ -45,8 +48,9 @@ function validateFocusEmailText() {
     }
 }
 
+// Validations of password (blur event)
 function validateBlurPasswordText() {
-    // Validate if the  email input contains text 
+
     if (passwordInput.value === "" || passwordInput.value === null) {
         errorPasswordMessageBlur = ("Password field can't be empty")
         infoDivPassword.style.display = "block"
@@ -84,8 +88,9 @@ function validateBlurPasswordText() {
     }
 }
 
+// Validations of password (focus event)
 function validateFocusPasswordText() {
-    // Validate if the  email input contains text 
+
     if (passwordInput.value === "" || passwordInput.value === null) {
         infoDivPassword.style.display = "none"
         return;
@@ -109,35 +114,28 @@ function validateFocusPasswordText() {
 
 }
 
+// Validations on "login" button
 function validationsOk() {
-    // Validate if the  email input contains text         
-    if (emailInput.value === "" || emailInput.value === null) {
 
+    if (emailInput.value === "" || emailInput.value === null) {
         return;
     }
     if (!isEmail(emailInput.value)) {
-
         return
     }
-
-    // Validate if the  email input contains text 
     if (passwordInput.value === "" || passwordInput.value === null) {
         return
     }
     if (passwordInput.value.search(/[a-z]/) < 0) {
-
         return;
     }
     if (passwordInput.value.search(/[A-Z]/) < 0) {
-
         return;
     }
     if (passwordInput.value.search(/[0-9]/) < 0) {
-
         return;
     }
     if (passwordInput.value.length < 8) {
-
         return;
     }
     else {
@@ -150,12 +148,11 @@ function validationsOk() {
 
 }
 
-//function validation mail
+//function to test if an email is invalid
 function isEmail(email) {
-    //test return a boolean
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email
-    );
+    )
 }
 
 

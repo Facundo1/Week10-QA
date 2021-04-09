@@ -1,3 +1,4 @@
+// Gettin elements by ID
 var infoDivMail = document.getElementById('register-mail-validation-div')
 var infoDivName = document.getElementById('register-name-validation-div')
 var infoDivPassword = document.getElementById('register-password-validation-div')
@@ -5,31 +6,32 @@ var infoDivConfirmPassword = document.getElementById('register-cpassword-validat
 var infoDiv = document.getElementById('register-validation-div')
 var registerButton = document.getElementById('register-button')
 var formWillReset = document.getElementById('register-form')
+var emailInput = document.getElementById('register-input-email')
+var nameInput = document.getElementById('register-input-name')
+var passwordInput = document.getElementById('register-input-password')
+var confirmPasswordInput = document.getElementById('register-input-confirm-password')
+
+// Variables to send validation messages
 var errorMailMessageBlur = ''
 var errorNameMessageBlur = ''
 var errorPasswordMessageBlur = ''
 var errorConfirmPasswordMessageBlur = ''
 var errorMessagesValidationsOk = ''
 
-var emailInput = document.getElementById('register-input-email')
-var nameInput = document.getElementById('register-input-name')
-var passwordInput = document.getElementById('register-input-password')
-var confirmPasswordInput = document.getElementById('register-input-confirm-password')
-
+// Add events to elements
 emailInput.addEventListener("blur", validateBlurEmailText)
 nameInput.addEventListener("blur", validateBlurNameText)
 passwordInput.addEventListener("blur", validateBlurPasswordText)
 confirmPasswordInput.addEventListener("blur", validateBlurConfirmPasswordText)
-
 emailInput.addEventListener("focus", validateFocusEmailText)
 nameInput.addEventListener("focus", validateFocusNameText)
 passwordInput.addEventListener("focus", validateFocusPasswordText)
 confirmPasswordInput.addEventListener("focus", validateFocusConfirmPasswordText)
-
 registerButton.addEventListener('click', validationsOk)
 
+// Validations of email (blur event)
 function validateBlurEmailText() {
-    // Validate if the  email input contains text         
+
     if (emailInput.value === "" || emailInput.value === null) {
         errorMailMessageBlur = ("Email field can't be empty")
         infoDivMail.style.display = "block"
@@ -46,13 +48,14 @@ function validateBlurEmailText() {
     }
 }
 
+// Validations of email (focus event)
 function validateFocusEmailText() {
     infoDivMail.style.display = "none"
-
 }
 
+// Validations of name (blur event)
 function validateBlurNameText() {
-    // Validate if the  email input contains text         
+
     if (nameInput.value === "" || nameInput.value === null) {
         errorNameMessageBlur = ("Name field can't be empty")
         infoDivName.style.display = "block"
@@ -69,14 +72,15 @@ function validateBlurNameText() {
     }
 }
 
+// Validations of name (focus event)
 function validateFocusNameText() {
-    // Validate if the  email input contains text         
-    infoDivName.style.display = "none"
 
+    infoDivName.style.display = "none"
 }
 
+// Validations of password (blur event)
 function validateBlurPasswordText() {
-    // Validate if the  email input contains text 
+
     if (passwordInput.value === "" || passwordInput.value === null) {
         errorPasswordMessageBlur = ("Password field can't be empty")
         infoDivPassword.style.display = "block"
@@ -114,8 +118,9 @@ function validateBlurPasswordText() {
     }
 }
 
+// Validations of password (focus event)
 function validateFocusPasswordText() {
-    // Validate if the  email input contains text 
+
     if (passwordInput.value === "" || passwordInput.value === null) {
         infoDivPassword.style.display = "none"
         return;
@@ -139,8 +144,9 @@ function validateFocusPasswordText() {
 
 }
 
+// Validations of confirm password (blur event)
 function validateBlurConfirmPasswordText() {
-    // Validate if the  email input contains text         
+
     if (confirmPasswordInput.value === "" || confirmPasswordInput.value === null) {
         errorConfirmPasswordMessageBlur = ("confirm password field can't be empty")
         infoDivConfirmPassword.style.display = "block"
@@ -157,46 +163,35 @@ function validateBlurConfirmPasswordText() {
     }
 }
 
+// Validations of confirm password (focus event)
 function validateFocusConfirmPasswordText() {
-    // Validate if the  email input contains text        
 
     infoDivConfirmPassword.style.display = "none"
     return;
-
 }
 
+// Validations on "register" button
 function validationsOk() {
-    // Validate if the  email input contains text 
-    if (emailInput.value === "" || emailInput.value === null) {
 
+    if (emailInput.value === "" || emailInput.value === null) {
         return;
     }
-
     // Validate if the  email input contains text 
     if (nameInput.value === "" || nameInput.value === null) {
-
         return;
     }
-
     // Validate if the  password input contains text
     if (passwordInput.value === "" || passwordInput.value === null) {
-
         return;
     }
-
     // Validate if the  confirm-password input contains text
     if (confirmPasswordInput.value === "" || confirmPasswordInput.value === null) {
-
         return;
     }
-
-
     // Validate if the  confirm-password match with the password
     if (confirmPasswordInput.value !== passwordInput.value) {
-
         return;
     }
-
     // all validations passed
     else {
         errorMessages = ("♣ All validations passed. Account created successfully♣")
@@ -207,17 +202,14 @@ function validationsOk() {
     }
 }
 
+//function to test if an email is invalid
 function isEmail(email) {
-    //test return a boolean
     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
         email
     );
 }
 
-function hasWhiteSpace(s) {
-    return /\s/g.test(s);
-}
-
+// Reset fields function
 function cleanForm() {
     formWillReset.reset();
 }
