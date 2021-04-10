@@ -28,6 +28,7 @@ nameInput.addEventListener("focus", validateFocusNameText)
 passwordInput.addEventListener("focus", validateFocusPasswordText)
 confirmPasswordInput.addEventListener("focus", validateFocusConfirmPasswordText)
 registerButton.addEventListener('click', validationsOk)
+registerButton.addEventListener('click', getEmail)
 
 // Validations of email (blur event)
 function validateBlurEmailText() {
@@ -214,6 +215,17 @@ function cleanForm() {
     formWillReset.reset();
 }
 
+// Request HTTP through GET method
+async function getEmail() {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/users?email=${emailInput.value}`, {
+            method: 'get',
+        });
+        console.log('Completed!', response);
+    } catch (err) {
+        console.error(`Error: ${err}`);
+    }
+}
 
 
 
