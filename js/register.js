@@ -1,4 +1,4 @@
-// Gettin elements by ID
+// Getting elements by ID
 var infoDivMail = document.getElementById('register-mail-validation-div')
 var infoDivName = document.getElementById('register-name-validation-div')
 var infoDivPassword = document.getElementById('register-password-validation-div')
@@ -10,6 +10,9 @@ var emailInput = document.getElementById('register-input-email')
 var nameInput = document.getElementById('register-input-name')
 var passwordInput = document.getElementById('register-input-password')
 var confirmPasswordInput = document.getElementById('register-input-confirm-password')
+
+// Getting form element
+var formExistence = document.getElementsByTagName('form')
 
 // Variables to send validation messages
 var errorMailMessageBlur = ''
@@ -173,6 +176,15 @@ function validateFocusConfirmPasswordText() {
 
 // Validations on "register" button
 function validationsOk() {
+
+    // Validate if in the HTML document exist a form
+    if (formExistence.length === 0) {
+        errorMessages = ("Form tag doesn't exist in the html document")
+        infoDiv.style.display = "block"
+        infoDiv.style.color = "red"
+        infoDiv.innerText = errorMessages
+        return;
+    }
 
     if (emailInput.value === "" || emailInput.value === null) {
         return;

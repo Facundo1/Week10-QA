@@ -6,6 +6,9 @@ var infoDiv = document.getElementById('login-validation-div')
 var infoDivMail = document.getElementById('mail-validation-div')
 var infoDivPassword = document.getElementById('password-validation-div')
 
+// Getting form element
+var formExistence = document.getElementsByTagName('form')
+
 // Variables to send validation messages
 var errorMailMessageBlur = ''
 var errorPasswordMessageBlur = ''
@@ -116,6 +119,15 @@ function validateFocusPasswordText() {
 
 // Validations on "login" button
 function validationsOk() {
+
+    // Validate if in the HTML document exist a form
+    if (formExistence.length === 0) {
+        errorMessages = ("Form tag doesn't exist in the html document")
+        infoDiv.style.display = "block"
+        infoDiv.style.color = "red"
+        infoDiv.innerText = errorMessages
+        return;
+    }
 
     if (emailInput.value === "" || emailInput.value === null) {
         return;
