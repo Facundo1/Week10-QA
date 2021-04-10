@@ -139,7 +139,7 @@ function validationsOk() {
         return;
     }
     else {
-        errorMessagesValidationsOk = ("Logged Succesfully ")
+        errorMessagesValidationsOk = (`Logged Succesfully. Your account data is: ${emailInput.value} ${passwordInput.value.type = "*******"}`)
         infoDiv.style.display = "block"
         infoDiv.style.color = "green"
         infoDiv.innerText = errorMessagesValidationsOk

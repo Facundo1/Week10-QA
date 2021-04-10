@@ -195,7 +195,7 @@ function validationsOk() {
     }
     // all validations passed
     else {
-        errorMessages = ("♣ All validations passed. Account created successfully♣")
+        errorMessages = (`Registered Succesfully. Your account data is: ${emailInput.value} ${nameInput.value} ${passwordInput.value.type = "*******"} ${confirmPasswordInput.value.type = "*******"}`)
         infoDiv.style.display = "block"
         infoDiv.style.color = "green"
         infoDiv.innerText = errorMessages
