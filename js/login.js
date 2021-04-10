@@ -21,6 +21,7 @@ emailInput.addEventListener("focus", validateFocusEmailText)
 passwordInput.addEventListener("focus", validateFocusPasswordText)
 loginButton.addEventListener('click', validationsOk)
 loginButton.addEventListener('click', getEmail)
+
 // Validations of email (blur event)
 function validateBlurEmailText() {
     if (emailInput.value === "" || emailInput.value === null) {
@@ -128,7 +129,6 @@ function validationsOk() {
         infoDiv.innerText = errorMessages
         return;
     }
-
     if (emailInput.value === "" || emailInput.value === null) {
         return;
     }
@@ -166,7 +166,6 @@ function isEmail(email) {
         email
     )
 }
-
 
 // Request HTTP through GET method
 async function getEmail() {
