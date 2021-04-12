@@ -6,8 +6,11 @@ var infoDiv = document.getElementById('login-validation-div')
 var infoDivMail = document.getElementById('mail-validation-div')
 var infoDivPassword = document.getElementById('password-validation-div')
 
-// Getting form element
+// Getting elements from tag
 var formExistence = document.getElementsByTagName('form')
+var labelsQantity = document.getElementsByTagName('Label')
+var inputsQantity = document.getElementsByTagName('input')
+var buttonsQantity = document.getElementsByTagName('button')
 
 // Variables to send validation messages
 var errorMailMessageBlur = ''
@@ -129,6 +132,35 @@ function validationsOk() {
         infoDiv.innerText = errorMessages
         return;
     }
+
+    // Validate the qantity of labels tags are in the document
+    if (labelsQantity.length !== 2) {
+        errorMessages = ("There aren't label tags in the document")
+        infoDiv.style.display = "block"
+        infoDiv.style.color = "red"
+        infoDiv.innerText = errorMessages
+        return;
+    }
+
+    // Validate the qantity of inputs tags are in the document
+    if (inputsQantity.length !== 2) {
+        errorMessages = ("there aren't inputs tags in the document")
+        infoDiv.style.display = "block"
+        infoDiv.style.color = "red"
+        infoDiv.innerText = errorMessages
+        return;
+    }
+
+    // Validate the qantity of buttons are in the document
+    if (buttonsQantity.value === 2) {
+        errorMessages = ("there aren't the enoght qantity of button tags in the document")
+        infoDiv.style.display = "block"
+        infoDiv.style.color = "red"
+        infoDiv.innerText = errorMessages
+        return;
+    }
+
+    // All validations of inputs
     if (emailInput.value === "" || emailInput.value === null) {
         return;
     }
@@ -169,13 +201,15 @@ function isEmail(email) {
 
 // Request HTTP through GET method
 async function getEmail() {
-    try {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/users?email=${emailInput.value}`, {
-            method: 'get',
-        });
-        console.log('Completed!', response);
-    } catch (err) {
-        console.error(`Error: ${err}`);
+    if (emailInput.value !== "" && emailInput.value !== null && passwordInput.value !== "" && passwordInput.value) {
+        try {
+            const response = await fetch(`https://jsonplaceholder.typicode.com/users?email=${emailInput.value}`, {
+                method: 'get',
+            });
+            console.log('Completed!', response);
+        } catch (err) {
+            console.error(`Error: ${err}`);
+        }
     }
 }
 
