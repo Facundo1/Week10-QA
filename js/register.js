@@ -239,8 +239,9 @@ function validationsOk() {
     else {
         errorMessages = (`Registered Succesfully. Your account data is: ${emailInput.value} ${nameInput.value} ${passwordInput.value.type = "*******"} ${confirmPasswordInput.value.type = "*******"}`)
         infoDiv.style.display = "block"
-        infoDiv.style.color = "green"
+        infoDiv.style.color = "black"
         infoDiv.innerText = errorMessages
+        cleanForm()
         return;
     }
 }
