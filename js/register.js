@@ -237,11 +237,12 @@ function validationsOk() {
     }
     // all validations passed
     else {
-        errorMessages = (`Registered Succesfully. Your account data is: ${emailInput.value} ${nameInput.value} ${passwordInput.value.type = "*******"} ${confirmPasswordInput.value.type = "*******"}`)
+        errorMessages = (`Registered Succesfully. Your account is: ${emailInput.value} - ${nameInput.value} - ${passwordInput.value.type = "*******"} - this message will disappear after 10 seconds`)
         infoDiv.style.display = "block"
         infoDiv.style.color = "black"
         infoDiv.innerText = errorMessages
         cleanForm()
+        hiddeInfo()
         return;
     }
 }
@@ -256,6 +257,11 @@ function isEmail(email) {
 // Reset fields function
 function cleanForm() {
     formWillReset.reset();
+}
+
+// Hidde info after seven seconds
+function hiddeInfo() {
+    setTimeout(function () { infoDiv.style.display = 'none' }, 10000);
 }
 
 // Request HTTP through GET method
