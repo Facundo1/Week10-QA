@@ -259,7 +259,7 @@ function cleanForm() {
     formWillReset.reset();
 }
 
-// Hidde info after seven seconds
+// Hidde info after ten seconds
 function hiddeInfo() {
     setTimeout(function () { infoDiv.style.display = 'none' }, 10000);
 }
