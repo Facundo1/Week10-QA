@@ -34,7 +34,7 @@ nameInput.addEventListener("focus", validateFocusNameText)
 passwordInput.addEventListener("focus", validateFocusPasswordText)
 confirmPasswordInput.addEventListener("focus", validateFocusConfirmPasswordText)
 registerButton.addEventListener('click', validationsOk)
-registerButton.addEventListener('click', getEmail)
+registerButton.addEventListener('click', sendInfo)
 
 // Validations of email (blur event)
 function validateBlurEmailText() {
@@ -241,7 +241,7 @@ function validationsOk() {
         infoDiv.style.display = "block"
         infoDiv.style.color = "black"
         infoDiv.innerText = errorMessages
-        cleanForm()
+
         hiddeInfo()
         return;
     }
@@ -265,21 +265,22 @@ function hiddeInfo() {
 }
 
 // Request HTTP through GET method
-async function getEmail() {
-    if (emailInput.value !== "" && emailInput.value !== null && passwordInput.value !== "" && passwordInput.value) {
-        try {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/users?email=${emailInput.value}`, {
-                method: 'get',
-            });
-            console.log('Completed!', response);
-        } catch (err) {
-            console.error(`Error: ${err}`);
-        }
+function sendInfo() {
+    const data = {
+        email: emailInput.value,
+        name: nameInput.value,
+        password: passwordInput.value
     }
 
+    fetch('http://localhost:4000/register', {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: { "Content-type": "application/json;" }
+    }).then(response => response.text())
+        .then(a => console.log(a))
+        .catch(err => console.log(err))
+
+
 }
-
-
-
 
 
