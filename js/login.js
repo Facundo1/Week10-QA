@@ -23,7 +23,7 @@ passwordInput.addEventListener("blur", validateBlurPasswordText)
 emailInput.addEventListener("focus", validateFocusEmailText)
 passwordInput.addEventListener("focus", validateFocusPasswordText)
 loginButton.addEventListener('click', validationsOk)
-loginButton.addEventListener('click', getEmail)
+loginButton.addEventListener('click', handleLogin)
 
 // Validations of email (blur event)
 function validateBlurEmailText() {
@@ -200,17 +200,21 @@ function isEmail(email) {
 }
 
 // Request HTTP through GET method
-async function getEmail() {
-    if (emailInput.value !== "" && emailInput.value !== null && passwordInput.value !== "" && passwordInput.value) {
-        try {
-            const response = await fetch(`https://jsonplaceholder.typicode.com/users?email=${emailInput.value}`, {
-                method: 'get',
-            });
-            console.log('Completed!', response);
-        } catch (err) {
-            console.error(`Error: ${err}`);
-        }
+async function handleLogin() {
+    const data = {
+        email: emailInput.value,
+        password: passwordInput.value
     }
+    fetch('http://localhost:4000/login', {
+        method: "PUT",
+        body: JSON.stringify(data),
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }
+    }).then(response => response.json())
+        .then(a => console.log(a))
+        .catch(err => console.log(err))
 }
 
 
