@@ -4,12 +4,12 @@ var infoDivName = document.getElementById('register-name-validation-div');
 var infoDivPassword = document.getElementById('register-password-validation-div');
 var infoDivConfirmPassword = document.getElementById('register-cpassword-validation-div');
 var infoDiv = document.getElementById('register-validation-div');
-var registerButton = document.getElementById('register-button');
+var registerButton = document.getElementById('registerButton');
 var formWillReset = document.getElementById('register-form');
-var emailInput = document.getElementById('register-input-email');
-var nameInput = document.getElementById('register-input-name');
-var passwordInput = document.getElementById('register-input-password');
-var confirmPasswordInput = document.getElementById('register-input-confirm-password');
+var emailInput = document.getElementById('registerInputEmail');
+var nameInput = document.getElementById('registerInputName');
+var passwordInput = document.getElementById('registerInputPassword');
+var confirmPasswordInput = document.getElementById('registerInputConfirmPassword');
 
 // Getting elements from tagname
 var formExistence = document.getElementsByTagName('form');

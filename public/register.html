@@ -1,46 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="stylesheet" href="../css/reset.css" />
+        <link rel="stylesheet" href="../css/style.css" />
+        <title>Register Page</title>
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <title>Register Page</title>
-</head>
+    <body>
+        <div class="register-form">
+            <h1>RadiumRocket Register</h1>
+            <form id="register-form">
+                <label
+                    >Email
+                    <input id="registerInputEmail" type="email" required />
+                    <div id="register-mail-validation-div"></div>
+                </label>
+                <label
+                    >Full name
+                    <input id="registerInputName" type="text" required />
+                    <div id="register-name-validation-div"></div>
+                </label>
+                <label
+                    >Password
+                    <input id="registerInputPassword" type="password" required />
+                    <div id="register-password-validation-div"></div>
+                </label>
+                <label
+                    >Confirm-Password
+                    <input id="registerInputConfirmPassword" type="password" required />
+                    <div id="register-cpassword-validation-div"></div>
+                </label>
+                <div id="buttons-div">
+                    <button id="registerButton" type="button">Create account</button>
+                    <button type="button" onclick="cleanForm()">Reset fields</button>
+                    <a id="BackToLoginLink" href="login.html" rel="noopener noreferrer">Back</a>
+                </div>
 
-<body>
-    <div class="register-form">
-        <h1>RadiumRocket Register</h1>
-        <form id='register-form'>
-            <label>Email
-                <input id='register-input-email' type="email" required />
-                <div id="register-mail-validation-div"></div>
-            </label>
-            <label>Full name
-                <input id='register-input-name' type="text" required />
-                <div id="register-name-validation-div"></div>
-            </label>
-            <label>Password
-                <input id='register-input-password' type="password" required />
-                <div id="register-password-validation-div"></div>
-            </label>
-            <label>Confirm-Password
-                <input id='register-input-confirm-password' type="password" required />
-                <div id="register-cpassword-validation-div"></div>
-            </label>
-            <div id="buttons-div">
-                <button id="register-button" type="button">Create account</button>
-                <button type="button" onclick="cleanForm()">Reset fields</button>
-                <a id='back-to-login-link' href="login.html" rel="noopener noreferrer">Back</a>
-            </div>
-
-
-            <div id="register-validation-div"></div>
-        </form>
-    </div>
-    <script src="../js/register.js"></script>
-</body>
-
+                <div id="registerValidationDiv"></div>
+            </form>
+        </div>
+        <script src="../js/register.js"></script>
+    </body>
 </html>
