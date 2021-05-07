@@ -7,35 +7,62 @@ describe('Register section', () => {
     const urlRegister = 'file:///C:/Users/facun/Desktop/Week10-QA/public/register.html';
     const urlLogin = 'file:///C:/Users/facun/Desktop/Week10-QA/public/login.html';
 
+    // Email Tests
     it('inputs with valid credentials', () => {
         browser.url(urlRegister);
-        expect(
-            RegisterPage.register('facundosa123@gmail.com', 'facundo loberse', 'Facun123', 'Facun123')
-        ).toBeUndefined();
+        RegisterPage.register('facundosa123@gmail.com', 'facundo loberse', 'Facun123', 'Facun123');
+        expect(RegisterPage.registerErrorDivMail).toBe('');
         browserPause();
     });
     it('input with empty email', () => {
-        expect(RegisterPage.register('', 'facundo loberse', 'Facun123', 'Facun123')).toBeUndefined();
+        RegisterPage.register('', 'facundo loberse', 'Facun123', 'Facun123');
+        expect(RegisterPage.registerErrorDivMail).toBe("Email field can't be empty");
         browserPause();
     });
     it('input with email invalid', () => {
-        expect(RegisterPage.register('facundosa123@', 'facundo loberse', 'Facun123', 'Facun123')).toBeUndefined();
+        RegisterPage.register('facundosa123@', 'facundo loberse', 'Facun123', 'Facun123');
+        expect(RegisterPage.registerErrorDivMail).toBe('Email is invalid');
+        browserPause();
+    });
+
+    // Name tests
+    it('input name empty', () => {
+        RegisterPage.register('facundosa123@gmail.com', '', 'ddsad', 'ddsad');
+        expect(RegisterPage.registerErrorDivName).toBe('Full name must contains a space');
         browserPause();
     });
     it('input name invalid', () => {
-        expect(RegisterPage.register('facundosa123@gmail.com', 'fak', 'ddsad', 'ddsad')).toBeUndefined();
+        RegisterPage.register('facundosa123@gmail.com', 'fac', 'ddsad', 'ddsad');
+        expect(RegisterPage.registerErrorDivName).toBe('Full name must contains a space');
         browserPause();
     });
-    it('input password invalid', () => {
-        expect(RegisterPage.register('facundosa123@gmail.com', 'facundo loberse', 'ddsad', 'ddsad')).toBeUndefined();
+
+    // Password tests
+    it('password without capital letter ', () => {
+        RegisterPage.register('facundosa123@gmail.com', 'facundo loberse', 'ffff', 'ffff');
+        expect(RegisterPage.registerErrorDivPassword).toBe('Password must contain at least one uppercase letter');
         browserPause();
     });
-    it('input confirm password invalid', () => {
-        expect(RegisterPage.register('facundosa123@gmail.com', 'facundo loberse', 'ddsad', 'FDFF')).toBeUndefined();
+    it('password without number', () => {
+        RegisterPage.register('facundosa123@gmail.com', 'facundo loberse', 'Facundol', 'Facundol');
+        expect(RegisterPage.registerErrorDivPassword).toBe('Password must contain at least one number');
         browserPause();
     });
-    it('all inputs invalids', () => {
-        expect(RegisterPage.register('fff.com', 'facun', 'Aaa', 'Fff')).toBeUndefined();
+    it('password with at least 8 characters', () => {
+        RegisterPage.register('facundosa123@gmail.com', 'facundo loberse', 'Facun1', 'Facun1');
+        expect(RegisterPage.registerErrorDivPassword).toBe('Password must have at least 8 characters');
+        browserPause();
+    });
+
+    //Password confirm tests
+    it('input confirm password empty', () => {
+        RegisterPage.register('facundosa123@gmail.com', 'facundo loberse', 'Facundo123', '');
+        expect(RegisterPage.registerErrorDivConfirmPassword).toBe("confirm password field can't be empty");
+        browserPause();
+    });
+    it('input confirm password not match with password', () => {
+        RegisterPage.register('facundosa123@gmail.com', 'facundo loberse', 'Facundo123', 'FFFFF');
+        expect(RegisterPage.registerErrorDivConfirmPassword).toBe('passwords must match');
         browserPause();
     });
     it('Button "Create account"', () => {

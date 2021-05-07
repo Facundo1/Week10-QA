@@ -1,4 +1,5 @@
 class RegisterPage {
+    // register inputs
     get inputEmail() {
         return $('input[id="registerInputEmail"]');
     }
@@ -11,6 +12,22 @@ class RegisterPage {
     get inputConfirmPassword() {
         return $('input[id="registerInputConfirmPassword"]');
     }
+
+    // Register error divs
+    get registerErrorDivMail() {
+        return $('div[id="registerMailValidationDiv"]').getText();
+    }
+    get registerErrorDivName() {
+        return $('div[id="registerNameValidationDiv"]').getText();
+    }
+    get registerErrorDivPassword() {
+        return $('div[id="registerPasswordValidationDiv"]').getText();
+    }
+    get registerErrorDivConfirmPassword() {
+        return $('div[id="registerCpasswordValidationDiv"]').getText();
+    }
+
+    // register buttons
     get btnSubmit() {
         return $('button[id="registerButton"]');
     }

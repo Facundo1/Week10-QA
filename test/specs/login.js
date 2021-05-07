@@ -7,25 +7,43 @@ describe('Login section', () => {
     const urlRegister = 'file:///C:/Users/facun/Desktop/Week10-QA/public/register.html';
     const urlLogin = 'file:///C:/Users/facun/Desktop/Week10-QA/public/login.html';
 
+    // Email tests
     it('input with valid credentials', () => {
         browser.url(urlLogin);
-        expect(LoginPage.login('facundosa123@gmail.com', 'Facun123')).toBeUndefined();
+        LoginPage.login('facundosa123@gmail.com', 'Facun123');
+        expect(LoginPage.errorDivEmail).toBe('');
         browserPause();
     });
     it('input with empty email', () => {
-        expect(LoginPage.login('', 'Facun123')).toBeUndefined();
+        LoginPage.login('', 'Facun123');
+        expect(LoginPage.errorDivEmail).toBe("Email field can't be empty");
         browserPause();
     });
     it('input with email invalid', () => {
-        expect(LoginPage.login('fac@gmail', 'Facun123')).toBeUndefined();
+        LoginPage.login('fac.gmmail', 'Facun123');
+        expect(LoginPage.errorDivEmail).toBe('Email is invalid');
         browserPause();
     });
-    it('input password invalid', () => {
-        expect(LoginPage.login('facundosa123@gmail.com', 'ffffff')).toBeUndefined();
+
+    // Password tests
+    it('Password without lowercase letter', () => {
+        LoginPage.login('facundosa123@gmail.com', 'FFFFF');
+        expect(LoginPage.errorDivPassword).toBe('Password must contain at least one lowercase letter');
         browserPause();
     });
-    it('input Password and username invalids', () => {
-        expect(LoginPage.login('fff@.com', 'dddd')).toBeUndefined();
+    it('password without capital letter ', () => {
+        LoginPage.login('facundosa123@gmail.com', 'ffffff');
+        expect(LoginPage.errorDivPassword).toBe('Password must contain at least one uppercase letter');
+        browserPause();
+    });
+    it('input without number', () => {
+        LoginPage.login('facundosa123@gmail.com', 'Fffff');
+        expect(LoginPage.errorDivPassword).toBe('Password must contain at least one number');
+        browserPause();
+    });
+    it('password with at least 8 characters', () => {
+        LoginPage.login('facundosa123@gmail.com', 'Fffff1');
+        expect(LoginPage.errorDivPassword).toBe('Password must have at least 8 characters');
         browserPause();
     });
     it('Button "Create account"', () => {

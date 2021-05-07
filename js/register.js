@@ -1,8 +1,8 @@
 // Getting elements by ID
-var infoDivMail = document.getElementById('register-mail-validation-div');
-var infoDivName = document.getElementById('register-name-validation-div');
-var infoDivPassword = document.getElementById('register-password-validation-div');
-var infoDivConfirmPassword = document.getElementById('register-cpassword-validation-div');
+var infoDivMail = document.getElementById('registerMailValidationDiv');
+var infoDivName = document.getElementById('registerNameValidationDiv');
+var infoDivPassword = document.getElementById('registerPasswordValidationDiv');
+var infoDivConfirmPassword = document.getElementById('registerCpasswordValidationDiv');
 var infoDiv = document.getElementById('register-validation-div');
 var registerButton = document.getElementById('registerButton');
 var formWillReset = document.getElementById('register-form');
