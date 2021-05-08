@@ -4,8 +4,8 @@ describe('Register section', () => {
     function browserPause() {
         browser.pause(2000);
     }
-    const urlRegister = 'file:///C:/Users/facun/Desktop/Week10-QA/public/register.html';
-    const urlLogin = 'file:///C:/Users/facun/Desktop/Week10-QA/public/login.html';
+    const urlRegister = 'https://facundo1.github.io/Week10-QA/public/register.html';
+    const urlLogin = 'https://facundo1.github.io/Week10-QA/public/register.html';
 
     // Email Tests
     it('inputs with valid credentials', () => {
@@ -44,12 +44,12 @@ describe('Register section', () => {
         browserPause();
     });
     it('password without number', () => {
-        RegisterPage.register('facundosa123@gmail.com', 'facundo loberse', 'Facundol', 'Facundol');
+        RegisterPage.register('facundosa123@gmail.com', 'Luqueta Sapen', 'Facundol', 'Facundol');
         expect(RegisterPage.registerErrorDivPassword).toBe('Password must contain at least one number');
         browserPause();
     });
     it('password with at least 8 characters', () => {
-        RegisterPage.register('facundosa123@gmail.com', 'facundo loberse', 'Facun1', 'Facun1');
+        RegisterPage.register('facundosa123@gmail.com', 'Keving Mariano', 'Pass12', 'Pass12');
         expect(RegisterPage.registerErrorDivPassword).toBe('Password must have at least 8 characters');
         browserPause();
     });
