@@ -2,19 +2,14 @@ const LoginPage = require('../pageobjects/login.page');
 
 describe('Login section', () => {
     function browserPause() {
-        browser.pause(2000);
+        browser.pause(3000);
     }
     const urlRegister = 'file:///C:/Users/facun/Desktop/Week10-QA/public/register.html';
     const urlLogin = 'file:///C:/Users/facun/Desktop/Week10-QA/public/login.html';
 
     // Email tests
-    it('input with valid credentials', () => {
-        browser.url(urlLogin);
-        LoginPage.login('facundosa123@gmail.com', 'Facun123');
-        expect(LoginPage.errorDivEmail).toBe('');
-        browserPause();
-    });
     it('input with empty email', () => {
+        browser.url(urlLogin);
         LoginPage.login('', 'Facun123');
         expect(LoginPage.errorDivEmail).toBe("Email field can't be empty");
         browserPause();
@@ -46,9 +41,18 @@ describe('Login section', () => {
         expect(LoginPage.errorDivPassword).toBe('Password must have at least 8 characters');
         browserPause();
     });
-    it('Button "Create account"', () => {
+
+    // Test with valid credentials
+    it('input with valid credentials', () => {
+        LoginPage.login('facundosa123@gmail.com', 'Facun123');
+        expect(LoginPage.errorDivEmail).toBe('');
+        browserPause();
+    });
+
+    //Go to register link
+    it('Button "Create account" to go to register', () => {
         LoginPage.buttonRegister();
-        if (browser.getUrl() === urlRegister) console.log('-------BUTTON PASS-----');
+        if (browser.getUrl() === urlRegister);
         else throw new Error('ERROR');
         browserPause();
     });

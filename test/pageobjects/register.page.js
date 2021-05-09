@@ -31,15 +31,15 @@ class RegisterPage {
     get btnSubmit() {
         return $('button[id="registerButton"]');
     }
-    get btnRegister() {
+    get btnBackToLogin() {
         return $('a[id="BackToLoginLink"]');
     }
 
-    buttonRegister() {
-        this.btnRegister.click();
+    BackToLogin() {
+        this.btnBackToLogin.click();
     }
 
-    register(email, password, name, confirmPass) {
+    register(email, name, password, confirmPass) {
         this.inputEmail.setValue(email);
         this.inputName.setValue(name);
         this.inputPassword.setValue(password);
