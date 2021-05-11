@@ -4,8 +4,8 @@ describe('Login section', () => {
     function browserPause() {
         browser.pause(3000);
     }
-    const urlRegister = 'file:///C:/Users/facun/Desktop/Week10-QA/public/register.html';
-    const urlLogin = 'file:///C:/Users/facun/Desktop/Week10-QA/public/login.html';
+    const urlRegister = 'https://facundo1.github.io/Week10-QA/public/register.html';
+    const urlLogin = 'https://facundo1.github.io/Week10-QA/public/login.html';
 
     // Email tests
     it('input with empty email', () => {

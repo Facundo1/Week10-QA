@@ -31,8 +31,15 @@ class RegisterPage {
     get btnSubmit() {
         return $('button[id="registerButton"]');
     }
+    get btnResetForm() {
+        return $('button[id="resetFormBtn"]');
+    }
     get btnBackToLogin() {
         return $('a[id="BackToLoginLink"]');
+    }
+
+    resetForm() {
+        this.btnResetForm.click();
     }
 
     BackToLogin() {

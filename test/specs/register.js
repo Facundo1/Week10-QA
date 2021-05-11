@@ -73,6 +73,13 @@ describe('Register section', () => {
         browserPause();
     });
 
+    /*     //Reset button
+    it('Reset form test', () => {
+        RegisterPage.resetForm();
+        expect(RegisterPage.inputEmail).toBe('');
+        browserPause();
+    }); */
+
     // Back To login
     it('Back to login link test', () => {
         RegisterPage.BackToLogin();
